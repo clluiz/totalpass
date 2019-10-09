@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 
 import app from './app.reducer';
 import address from './components/Address/address.reducer';
+import personalData from './components/PersonalData/personalData.reducer';
 
 const reducers = combineReducers({
   toastr: toastReducer,
   app,
-  address
+  address,
+  personalData
 });
 
 export default createStore(

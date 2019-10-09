@@ -26,7 +26,5 @@ export default Yup.object().shape({
     .required(Messages.REQUIRED_FIELD)
     .taxNumber(Messages.INVALID_TAX_NUMBER),
   phone: Yup.string().required(Messages.REQUIRED_FIELD),
-  birthday: Yup.string()
-    .validDate(Messages.INVALID_DATE),
-  gender: Yup.string().required(Messages.REQUIRED_FIELD)
+  birthday: Yup.string().validDate(Messages.INVALID_DATE),
 });

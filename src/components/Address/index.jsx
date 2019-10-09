@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../styles/form.scss";
 import ButtonAdvance from "../ButtonAdvance";
 import { Field, ErrorMessage, withFormik } from "formik";
 import AddressSchema from "./schema";
@@ -8,6 +7,8 @@ import BootstrapErrorMessage from "../BootstrapErrorMessage";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { queryZipcode } from "./address.actions";
+
+import "../../styles/form.scss";
 
 class Address extends Component {
   render() {

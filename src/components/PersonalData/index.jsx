@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import "../../styles/form.scss";
 import UploadPicture from "../UploadPicture";
 import ButtonAdvance from "../ButtonAdvance";
 import { Field, ErrorMessage, withFormik } from "formik";
 import PersonalDataSchema from "./schema";
 import InputMask from "react-input-mask";
 import BootstrapErrorMessage from "../BootstrapErrorMessage";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { setPersonalData } from "./personalData.actions";
+
+import "../../styles/form.scss";
 
 class PersonalData extends Component {
   render() {
@@ -25,10 +29,8 @@ class PersonalData extends Component {
               errors.name && touched.name ? "input is-invalid" : "input"
             }
           />
-          <ErrorMessage
-            name="name"
-            component={BootstrapErrorMessage} />          
-          
+          <ErrorMessage name="name" component={BootstrapErrorMessage} />
+
           <Field
             name="taxNumber"
             render={({ field }) => (
@@ -47,9 +49,7 @@ class PersonalData extends Component {
               />
             )}
           />
-          <ErrorMessage
-            name="taxNumber"
-            component={BootstrapErrorMessage} />          
+          <ErrorMessage name="taxNumber" component={BootstrapErrorMessage} />
 
           <Field
             name="phone"
@@ -69,23 +69,22 @@ class PersonalData extends Component {
               />
             )}
           />
-          <ErrorMessage
-            name="phone"
-            component={BootstrapErrorMessage} />          
-          <Field name="birthday"
+          <ErrorMessage name="phone" component={BootstrapErrorMessage} />
+          <Field
+            name="birthday"
             render={({ field }) => (
-              <InputMask 
+              <InputMask
                 {...field}
                 mask="99/99/9999"
                 name="birthday"
                 placeholder="Data de nascimento (DD/MM/YYYY)"
                 values={values.phone}
                 onChange={handleChange}
-                className="input" />
-            )} />
-          <ErrorMessage
-            name="birthday"
-            component={BootstrapErrorMessage} />          
+                className="input"
+              />
+            )}
+          />
+          <ErrorMessage name="birthday" component={BootstrapErrorMessage} />
           <Field
             component="select"
             className="select form-control"
@@ -93,7 +92,7 @@ class PersonalData extends Component {
             values={values.gender}
             onChange={handleChange}
           >
-            <option>Gênero</option>
+            <option value="">Gênero</option>
             <option value="Feminino">Feminino</option>
             <option value="Masculino">Masculino</option>
           </Field>
@@ -106,17 +105,18 @@ class PersonalData extends Component {
 
 const EnhancedForm = withFormik({
   isInitialValid: false,
-  mapPropsToValues: () => ({
-    name: '',
-    taxNumber: '',
-    phone: '',
-    birthday: '',
-    gender: ''
-  }),
+  mapPropsToValues: props => props.personalData,
   handleSubmit: (values, { props }) => {
+    props.setPersonalData(values);
     props.next();
   },
   validationSchema: PersonalDataSchema
 })(PersonalData);
 
-export default EnhancedForm;
+const mapStateToProps = state => ({ personalData: state.personalData });
+const mapDispatchToProps = dispatch => bindActionCreators({ setPersonalData }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EnhancedForm);

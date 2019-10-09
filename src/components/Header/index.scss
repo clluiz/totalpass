@@ -1,0 +1,36 @@
+.header {
+  height: 80px;
+  background-color: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .header__title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;    
+    color: var(--dark-text);
+  }
+
+  .header__description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    text-align: center;
+    color: var(--light-text);  
+  }
+  
+  .nav-button {
+    border: none;
+    background-color: transparent;
+    color : var(--light-text);
+    outline: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}

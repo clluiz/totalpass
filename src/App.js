@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Container from "react-bootstrap/Container";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import PersonalData from "./components/PersonalData";
+import Address from './components/Address';
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "bootstrap/dist/css/bootstrap.min.css";
+import { bindActionCreators } from "redux";
+import { setStep } from "./app.actions";
+
+class App extends Component {
+  
+  next = () => {
+    const { app } = this.props;
+    this.props.setStep(app.step + 1);
+  };
+
+  back = () => {
+    const { app } = this.props;
+    this.props.setStep(app.step - 1);
+  }
+
+  getStep = () => {
+    const { app } = this.props;
+    switch(app.step) {
+      case 0:
+        return <PersonalData next={this.next} />
+      case 1:
+        return <Address next={this.next} />
+      default:
+        return <PersonalData next={this.next} />
+    }
+  }
+
+  render() {
+    return (
+      <Container fluid>
+        <Header description="Dados pessoais" next={this.next} back={this.back} />
+        {this.getStep()}
+        <Footer />
+      </Container>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({ app: state.app });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setStep }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

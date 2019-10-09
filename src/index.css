@@ -14,6 +14,7 @@
   --dark-text: #222222;
   --advance: #00B098;
   --input-border: #2D595E;
+  --active-screen: #00BA9F;
 }
 
 .container-fluid {
@@ -24,4 +25,5 @@
 .form-container {
   padding-top: 30px;
   background-color: #F7FAFA;
+  min-height: 440px;
 }

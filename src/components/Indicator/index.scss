@@ -1,0 +1,15 @@
+.indicator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .ball {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: var(--light-text);
+  }
+  .ball--selected {
+    background-color: var(--active-screen);
+  }
+}

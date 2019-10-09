@@ -1,7 +1,16 @@
 import * as actions from './app.actionTypes';
 
 const initialState = {
-  step : 0
+  step : 0,
+  steps : [{
+    description : 'Dados pessoais'
+  }, {
+    description : 'Endereço'
+  }, {
+    description : 'Plano'
+  }, {
+    description : ''
+  }]
 }
 
 export default (state = initialState, action) => {

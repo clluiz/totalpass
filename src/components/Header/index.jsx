@@ -13,7 +13,7 @@ class Header extends Component {
       </button>
       <div>
         <div className="header__title">Cadastro</div>
-        <div className="header__description">{this.props.description}</div>
+        <div className="header__description">{app.steps[app.step].description}</div>
       </div>
       <button className="nav-button" onClick={this.props.next} style={{ visibility : app.step < 3 ? 'visible' : 'hidden' }}>
         <FontAwesomeIcon icon={faArrowRight}/>

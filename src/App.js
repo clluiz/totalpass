@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PersonalData from "./components/PersonalData";
 import Address from './components/Address';
+import Plan from './components/Plan';
+import Confirmation from './components/Confirmation';
 import { connect } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,6 +32,10 @@ class App extends Component {
         return <PersonalData next={this.next} />
       case 1:
         return <Address next={this.next} />
+      case 2: 
+        return <Plan next={this.next} />
+      case 3:
+        return <Confirmation />
       default:
         return <PersonalData next={this.next} />
     }

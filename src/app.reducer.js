@@ -10,6 +10,19 @@ const initialState = {
     description : 'Plano'
   }, {
     description : ''
+  }],
+  plans : [{
+    name : 'Fit',
+    value : 200
+  }, {
+    name : 'Omega',
+    value : 300
+  }, {
+    name : 'Beta',
+    value : 400
+  },{
+    name : 'Ultra',
+    value : 500
   }]
 }
 

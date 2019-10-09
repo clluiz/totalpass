@@ -107,11 +107,11 @@ class PersonalData extends Component {
 const EnhancedForm = withFormik({
   isInitialValid: false,
   mapPropsToValues: () => ({
-    name: "Cleiton",
-    taxNumber: "07986611600",
-    phone: "319960206665",
-    birthday: "03/10/1986",
-    gender: "Masculino"
+    name: '',
+    taxNumber: '',
+    phone: '',
+    birthday: '',
+    gender: ''
   }),
   handleSubmit: (values, { props }) => {
     props.next();

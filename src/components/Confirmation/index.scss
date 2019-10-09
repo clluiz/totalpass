@@ -1,0 +1,33 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .fa-check {
+    border: 1.5px solid var(--active-screen);
+    border-radius: 50%;
+    height: 111px;
+    width: 111px;
+    padding: 20px;
+    color: var(--active-screen);
+    margin-bottom: 20px;
+  }
+
+  .confirmation__title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    text-transform: uppercase;
+    color: var(--active-screen);
+    margin-bottom: 20px;
+  }
+
+  .confirmation__text {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: var(--input-border);
+    width: 232px;
+  }
+}

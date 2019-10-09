@@ -8,7 +8,7 @@ class Header extends Component {
   render() {
     const { app } = this.props;
     return (<header className="header">
-      <button className="nav-button" onClick={this.props.back} style={{ visibility : app.step > 0 ? 'visible' : 'hidden' }}>
+      <button className="nav-button" onClick={this.props.back} style={{ visibility : app.step > 0 && app.step < 3 ? 'visible' : 'hidden' }}>
         <FontAwesomeIcon icon={faArrowLeft}/>
       </button>
       <div>

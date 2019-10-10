@@ -12,6 +12,6 @@ export const getGif = query => async dispach => {
   const response = await getGifFromGiphy(query);
   dispach({
     type: actions.SET_GIF,
-    payload: response.data.image_url,
+    payload: response && response.data ? response.data.image_url : null,
   });
 };

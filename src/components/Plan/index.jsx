@@ -8,19 +8,23 @@ import {
   faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import Card from './Card';
-import { goToPlan } from './plan.actions';
+import { goToPlan, getGif } from './plan.actions';
 
 import "../../styles/form.scss";
 import "./index.scss";
 
 class Plan extends Component {
 
+  componentDidMount() {
+    this.getGif();
+  }
+
   previousPlan = (event) => {
     event.preventDefault();
     const { plan } = this.props;
     let previousPlan = plan.selectedPlan - 1;
     if(previousPlan < 0) previousPlan = plan.plans.length - 1;
-    this.props.goToPlan(previousPlan);
+    this.setPlan(previousPlan);
   }
 
   nextPlan = (event) => {
@@ -28,12 +32,22 @@ class Plan extends Component {
     const { plan } = this.props;
     let nextPlan = plan.selectedPlan + 1;
     if(nextPlan > (plan.plans.length - 1)) nextPlan = 0;
-    this.props.goToPlan(nextPlan);
+    this.setPlan(nextPlan);
+  }
+
+  setPlan = (index) => {
+    this.props.goToPlan(index);
+    this.getGif();
+  }
+
+  getGif = () => {
+    this.props.getGif();
   }
 
   getPlan = () => {
     const { plan } = this.props;
-    return <Card {...plan.plans[plan.selectedPlan]} />;
+    const selectedPlan = plan.plans[plan.selectedPlan];
+    return <Card {...selectedPlan} />;
   };
  
   render() {
@@ -58,6 +72,6 @@ class Plan extends Component {
 }
 
 const mapStateToProps = state => ({ plan: state.plan });
-const mapDispatchToProps = dispatch => bindActionCreators({ goToPlan }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ goToPlan, getGif }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plan);

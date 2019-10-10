@@ -2,6 +2,7 @@ import * as actions from './plan.actionTypes';
 
 const initialState = {
   selectedPlan : 0,
+  gif: '',
   plans: [
     {
       title: "Mega",
@@ -37,6 +38,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         selectedPlan : action.payload
+      }
+    case actions.SET_GIF:
+      return {
+        ...state,
+        gif : action.payload
       }
     default :
       return state;

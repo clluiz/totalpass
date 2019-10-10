@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import smartfit from "../smartfit.svg";
 import plus from "../plus.svg";
@@ -6,7 +7,7 @@ import bioritmo from "../bioritmo.svg";
 
 import './index.scss';
 
-export default props => (
+const Card = props => (
   <div className="card-plan">
   <div className="card-plan__title">{props.title}</div>
   <div className="logos">
@@ -22,5 +23,10 @@ export default props => (
     Santana, Santo André, São Caetano, Tamboré e West Plaza.
   </p>
   <div className="card-plan__price">R$ {props.price} / mês</div>
+  { props.plan.gif ? <img alt="Gif" src={props.plan.gif} /> : null }
 </div>
 )
+
+const mapStateToProps = state => ({ plan : state.plan });
+
+export default connect(mapStateToProps)(Card);

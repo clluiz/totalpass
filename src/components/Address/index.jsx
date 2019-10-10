@@ -6,7 +6,7 @@ import InputMask from "react-input-mask";
 import BootstrapErrorMessage from "../BootstrapErrorMessage";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { queryZipcode } from "./address.actions";
+import { queryZipcode, setAddress } from "./address.actions";
 
 import "../../styles/form.scss";
 
@@ -161,6 +161,7 @@ const EnhancedForm = withFormik({
     return props.address;
   },
   handleSubmit: (values, { props }) => {
+    props.setAddress(values);
     props.next();
   },
   validationSchema: AddressSchema,
@@ -169,7 +170,7 @@ const EnhancedForm = withFormik({
 
 const mapStateToProps = state => ({ address: state.address });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ queryZipcode }, dispatch);
+  bindActionCreators({ queryZipcode, setAddress }, dispatch);
 
 export default connect(
   mapStateToProps,

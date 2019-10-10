@@ -19,3 +19,10 @@ export const queryZipcode = zipCode => async dispach => {
     payload: convertToAddressObject(address)
   });
 };
+
+export const setAddress = address => {
+  return {
+    type    : actions.SET_ADDRESS,
+    payload : address
+  };
+};

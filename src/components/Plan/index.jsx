@@ -39,7 +39,7 @@ class Plan extends Component {
   render() {
     return (
       <div className="form-container">
-        <form className="form plan">
+        <div className="form plan">
           <div>Escolha seu plano</div>
           <div className="caroussel">
             <button className="nav-button" onClick={(event) => this.previousPlan(event)}>
@@ -51,7 +51,7 @@ class Plan extends Component {
             </button>
           </div>
           <ButtonAdvance onClick={this.props.next} />
-        </form>
+        </div>
       </div>
     );
   }

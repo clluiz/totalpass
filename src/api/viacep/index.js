@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-export const getAddressByZipcode = async (zipCode) => {
+export const getAddressByZipcode = async zipCode => {
   try {
-    const response = await axios.get(`https://viacep.com.br/ws/${zipCode.replace(/\D/g, '')}/json`);
+    const response = await axios.get(
+      `https://viacep.com.br/ws/${zipCode.replace(/\D/g, '')}/json`
+    );
     return response.data || {};
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 };

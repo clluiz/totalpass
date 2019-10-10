@@ -3,20 +3,22 @@ import * as Messages from '../../messages';
 import isTaxNumberValid from '../../utils';
 import { parse, isValid } from 'date-fns';
 
-Yup.addMethod(Yup.string, "taxNumber", function(message) {
-  return this.test("validate-tax-number", message, function(value) {
+Yup.addMethod(Yup.string, 'taxNumber', function(message) {
+  return this.test('validate-tax-number', message, function(value) {
     const { path, createError } = this;
     if (!value) return true;
     return isTaxNumberValid(value) ? true : createError({ path, message });
   });
 });
 
-Yup.addMethod(Yup.string, "validDate", function(message) {
+Yup.addMethod(Yup.string, 'validDate', function(message) {
   return this.test('validate-date', message, function(value) {
     const { path, createError } = this;
-    if(!value) return true;
-    const formatedDate = value.replace(/\//g,'-');
-    return isValid(parse(formatedDate, 'dd-MM-yyyy', -1)) ? true : createError({ path, message });
+    if (!value) return true;
+    const formatedDate = value.replace(/\//g, '-');
+    return isValid(parse(formatedDate, 'dd-MM-yyyy', -1))
+      ? true
+      : createError({ path, message });
   });
 });
 

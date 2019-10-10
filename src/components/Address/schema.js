@@ -6,5 +6,5 @@ export default Yup.object().shape({
   address: Yup.string().required(Messages.REQUIRED_FIELD),
   number: Yup.string().required(Messages.REQUIRED_FIELD),
   city: Yup.string().required(Messages.REQUIRED_FIELD),
-  state: Yup.string().required(Messages.REQUIRED_FIELD)
+  state: Yup.string().required(Messages.REQUIRED_FIELD),
 });

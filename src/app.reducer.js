@@ -1,21 +1,21 @@
-import * as actions from "./app.actionTypes";
+import * as actions from './app.actionTypes';
 
 const initialState = {
   step: 0,
   steps: [
     {
-      description: "Dados pessoais"
+      description: 'Dados pessoais',
     },
     {
-      description: "Endereço"
+      description: 'Endereço',
     },
     {
-      description: "Plano"
+      description: 'Plano',
     },
     {
-      description: ""
-    }
-  ]
+      description: '',
+    },
+  ],
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
     case actions.SET_STEP:
       return {
         ...state,
-        step: action.payload
+        step: action.payload,
       };
     default:
       return state;

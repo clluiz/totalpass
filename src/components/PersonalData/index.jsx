@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import UploadPicture from "../UploadPicture";
-import ButtonAdvance from "../ButtonAdvance";
-import { Field, ErrorMessage, withFormik } from "formik";
-import PersonalDataSchema from "./schema";
-import InputMask from "react-input-mask";
-import BootstrapErrorMessage from "../BootstrapErrorMessage";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { setPersonalData } from "./personalData.actions";
+import React, { Component } from 'react';
+import UploadPicture from '../UploadPicture';
+import ButtonAdvance from '../ButtonAdvance';
+import { Field, ErrorMessage, withFormik } from 'formik';
+import PersonalDataSchema from './schema';
+import InputMask from 'react-input-mask';
+import BootstrapErrorMessage from '../BootstrapErrorMessage';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setPersonalData } from './personalData.actions';
 
-import "../../styles/form.scss";
+import '../../styles/form.scss';
 
 class PersonalData extends Component {
   render() {
@@ -26,7 +26,7 @@ class PersonalData extends Component {
             values={values.name}
             onChange={handleChange}
             className={
-              errors.name && touched.name ? "input is-invalid" : "input"
+              errors.name && touched.name ? 'input is-invalid' : 'input'
             }
           />
           <ErrorMessage name="name" component={BootstrapErrorMessage} />
@@ -43,8 +43,8 @@ class PersonalData extends Component {
                 onChange={handleChange}
                 className={
                   errors.taxNumber && touched.taxNumber
-                    ? "input is-invalid"
-                    : "input"
+                    ? 'input is-invalid'
+                    : 'input'
                 }
               />
             )}
@@ -64,7 +64,7 @@ class PersonalData extends Component {
                 values={values.phone}
                 onChange={handleChange}
                 className={
-                  errors.phone && touched.phone ? "input is-invalid" : "input"
+                  errors.phone && touched.phone ? 'input is-invalid' : 'input'
                 }
               />
             )}
@@ -110,11 +110,12 @@ const EnhancedForm = withFormik({
     props.setPersonalData(values);
     props.next();
   },
-  validationSchema: PersonalDataSchema
+  validationSchema: PersonalDataSchema,
 })(PersonalData);
 
 const mapStateToProps = state => ({ personalData: state.personalData });
-const mapDispatchToProps = dispatch => bindActionCreators({ setPersonalData }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setPersonalData }, dispatch);
 
 export default connect(
   mapStateToProps,

@@ -14,11 +14,7 @@ const reducers = combineReducers({
   address,
   personalData,
   picture,
-  plan
+  plan,
 });
 
-export default createStore(
-  reducers,
-  applyMiddleware(thunk)
-);
-  
+export default createStore(reducers, applyMiddleware(thunk));

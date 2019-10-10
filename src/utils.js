@@ -14,20 +14,23 @@ const UNAUTHORIZED_CPF_NUMBERS = [
 function isCpfValid(value) {
   if (!value) return false;
   let onlyDigits = value.replace(/\D+/g, '');
-  if (onlyDigits.length !== 11 || UNAUTHORIZED_CPF_NUMBERS.includes(onlyDigits)) return false;
+  if (onlyDigits.length !== 11 || UNAUTHORIZED_CPF_NUMBERS.includes(onlyDigits))
+    return false;
 
   let sum = 0;
   let rest;
   let i;
 
-  for (i = 1; i <= 9; i++) sum = sum + parseInt(onlyDigits.substring(i - 1, i)) * (11 - i);
+  for (i = 1; i <= 9; i++)
+    sum = sum + parseInt(onlyDigits.substring(i - 1, i)) * (11 - i);
   rest = (sum * 10) % 11;
 
   if (rest === 10 || rest === 11) rest = 0;
   if (rest !== parseInt(onlyDigits.substring(9, 10))) return false;
 
   sum = 0;
-  for (i = 1; i <= 10; i++) sum = sum + parseInt(onlyDigits.substring(i - 1, i)) * (12 - i);
+  for (i = 1; i <= 10; i++)
+    sum = sum + parseInt(onlyDigits.substring(i - 1, i)) * (12 - i);
   rest = (sum * 10) % 11;
 
   if (rest === 10 || rest === 11) rest = 0;
@@ -40,4 +43,3 @@ const isTaxNumberValid = function(v) {
 };
 
 export default isTaxNumberValid;
-

@@ -1,24 +1,18 @@
-import React, { Component } from "react";
-import ButtonAdvance from "../ButtonAdvance";
-import { Field, ErrorMessage, withFormik } from "formik";
-import AddressSchema from "./schema";
-import InputMask from "react-input-mask";
-import BootstrapErrorMessage from "../BootstrapErrorMessage";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { queryZipcode, setAddress } from "./address.actions";
+import React, { Component } from 'react';
+import ButtonAdvance from '../ButtonAdvance';
+import { Field, ErrorMessage, withFormik } from 'formik';
+import AddressSchema from './schema';
+import InputMask from 'react-input-mask';
+import BootstrapErrorMessage from '../BootstrapErrorMessage';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { queryZipcode, setAddress } from './address.actions';
 
-import "../../styles/form.scss";
+import '../../styles/form.scss';
 
 class Address extends Component {
   render() {
-    const {
-      values,
-      handleSubmit,
-      handleChange,
-      errors,
-      touched
-    } = this.props;
+    const { values, handleSubmit, handleChange, errors, touched } = this.props;
     return (
       <div className="form-container">
         <form className="form" onSubmit={handleSubmit} noValidate>
@@ -26,17 +20,17 @@ class Address extends Component {
             name="zipCode"
             render={({ field }) => (
               <InputMask
-              {...field}
-              mask="99999-999"
-              required
-              placeholder="CEP"
-              values={values.zipCode}
-              onChange={handleChange}
-              onBlur={() => this.props.queryZipcode(values.zipCode)}
-              className={
+                {...field}
+                mask="99999-999"
+                required
+                placeholder="CEP"
+                values={values.zipCode}
+                onChange={handleChange}
+                onBlur={() => this.props.queryZipcode(values.zipCode)}
+                className={
                   errors.zipCode && touched.zipCode
-                    ? "input is-invalid"
-                    : "input"
+                    ? 'input is-invalid'
+                    : 'input'
                 }
               />
             )}
@@ -51,7 +45,7 @@ class Address extends Component {
             values={values.address}
             onChange={handleChange}
             className={
-              errors.address && touched.address ? "input is-invalid" : "input"
+              errors.address && touched.address ? 'input is-invalid' : 'input'
             }
           />
           <ErrorMessage name="address" component={BootstrapErrorMessage} />
@@ -64,7 +58,7 @@ class Address extends Component {
             values={values.number}
             onChange={handleChange}
             className={
-              errors.number && touched.number ? "input is-invalid" : "input"
+              errors.number && touched.number ? 'input is-invalid' : 'input'
             }
           />
           <ErrorMessage name="number" component={BootstrapErrorMessage} />
@@ -77,8 +71,8 @@ class Address extends Component {
             onChange={handleChange}
             className={
               errors.complement && touched.complement
-                ? "input is-invalid"
-                : "input"
+                ? 'input is-invalid'
+                : 'input'
             }
           />
           <ErrorMessage name="complement" component={BootstrapErrorMessage} />
@@ -91,8 +85,8 @@ class Address extends Component {
             onChange={handleChange}
             className={
               errors.complement && touched.complement
-                ? "input is-invalid"
-                : "input"
+                ? 'input is-invalid'
+                : 'input'
             }
           />
           <ErrorMessage name="neighborhood" component={BootstrapErrorMessage} />
@@ -105,7 +99,7 @@ class Address extends Component {
             required
             onChange={handleChange}
             className={
-              errors.city && touched.city ? "input is-invalid" : "input"
+              errors.city && touched.city ? 'input is-invalid' : 'input'
             }
           />
           <ErrorMessage name="city" component={BootstrapErrorMessage} />
@@ -165,7 +159,7 @@ const EnhancedForm = withFormik({
     props.next();
   },
   validationSchema: AddressSchema,
-  enableReinitialize : true
+  enableReinitialize: true,
 })(Address);
 
 const mapStateToProps = state => ({ address: state.address });

@@ -1,8 +1,8 @@
 import * as actions from './app.actionTypes';
 
-export const setStep = (step) => {
+export const setStep = step => {
   return {
-    type    : actions.SET_STEP,
-    payload : step
-  }
-}
+    type: actions.SET_STEP,
+    payload: step,
+  };
+};

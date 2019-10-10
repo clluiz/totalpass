@@ -1,20 +1,19 @@
-import React, { Component } from "react";
-import "./App.css";
-import Container from "react-bootstrap/Container";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import PersonalData from "./components/PersonalData";
+import React, { Component } from 'react';
+import './App.css';
+import Container from 'react-bootstrap/Container';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PersonalData from './components/PersonalData';
 import Address from './components/Address';
 import Plan from './components/Plan';
 import Confirmation from './components/Confirmation';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import { bindActionCreators } from "redux";
-import { setStep } from "./app.actions";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { bindActionCreators } from 'redux';
+import { setStep } from './app.actions';
 
 class App extends Component {
-  
   next = () => {
     const { app } = this.props;
     this.props.setStep(app.step + 1);
@@ -23,28 +22,32 @@ class App extends Component {
   back = () => {
     const { app } = this.props;
     this.props.setStep(app.step - 1);
-  }
+  };
 
   getStep = () => {
     const { app } = this.props;
-    switch(app.step) {
+    switch (app.step) {
       case 0:
-        return <PersonalData next={this.next} />
+        return <PersonalData next={this.next} />;
       case 1:
-        return <Address next={this.next} />
-      case 2: 
-        return <Plan next={this.next} />
+        return <Address next={this.next} />;
+      case 2:
+        return <Plan next={this.next} />;
       case 3:
-        return <Confirmation />
+        return <Confirmation />;
       default:
-        return <PersonalData next={this.next} />
+        return <PersonalData next={this.next} />;
     }
-  }
+  };
 
   render() {
     return (
       <Container fluid>
-        <Header description="Dados pessoais" next={this.next} back={this.back} />
+        <Header
+          description="Dados pessoais"
+          next={this.next}
+          back={this.back}
+        />
         {this.getStep()}
         <Footer />
       </Container>

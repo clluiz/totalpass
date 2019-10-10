@@ -19,7 +19,6 @@ class Plan extends Component {
   }
 
   previousPlan = event => {
-    event.preventDefault();
     const { plan } = this.props;
     let previousPlan = plan.selectedPlan - 1;
     if (previousPlan < 0) previousPlan = plan.plans.length - 1;
@@ -27,7 +26,6 @@ class Plan extends Component {
   };
 
   nextPlan = event => {
-    event.preventDefault();
     const { plan } = this.props;
     let nextPlan = plan.selectedPlan + 1;
     if (nextPlan > plan.plans.length - 1) nextPlan = 0;
@@ -57,7 +55,7 @@ class Plan extends Component {
           <div className="caroussel">
             <button
               className="nav-button"
-              onClick={event => this.previousPlan(event)}
+              onClick={this.previousPlan}
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
@@ -65,7 +63,7 @@ class Plan extends Component {
             <button className="nav-button">
               <FontAwesomeIcon
                 icon={faChevronRight}
-                onClick={event => this.nextPlan(event)}
+                onClick={this.nextPlan}
               />
             </button>
           </div>

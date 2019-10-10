@@ -1,7 +1,7 @@
 import * as actions from "./app.actionTypes";
 
 const initialState = {
-  step: 0,
+  step: 2,
   steps: [
     {
       description: "Dados pessoais"
@@ -17,6 +17,10 @@ const initialState = {
     }
   ],
   plans: [
+    {
+      name: "Mega",
+      valie: 100
+    },
     {
       name: "Fit",
       value: 200

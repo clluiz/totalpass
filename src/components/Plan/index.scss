@@ -1,0 +1,71 @@
+.plan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .card-plan {
+    background-color: #FFFFFF;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logos {
+        img {
+          display: inline-block;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+    }
+
+    .card-plan__title {
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--active-screen);
+      margin-bottom: 30px;
+    }
+
+    hr {
+      border: 1px dashed var(--light-text);
+      width: 100%;
+    }
+
+    .card-plan__sub-title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      text-transform: uppercase;      
+      color: var(--input-border);      
+      margin-top: 15px;
+      margin-bottom : 15px;
+    }
+
+    .card-plan__cities {
+      font-style: normal;
+      font-size: 14px;
+      line-height: 18px;
+      text-align: center;
+      color: var(--dark-text);     
+      text-align: justify; 
+    }
+
+    .card-plan__price {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--input-border)      
+    }
+  }
+}

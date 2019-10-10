@@ -6,13 +6,15 @@ import app from './app.reducer';
 import address from './components/Address/address.reducer';
 import personalData from './components/PersonalData/personalData.reducer';
 import picture from './components/UploadPicture/picture.reducer';
+import plan from './components/Plan/plan.reducer';
 
 const reducers = combineReducers({
   toastr: toastReducer,
   app,
   address,
   personalData,
-  picture
+  picture,
+  plan
 });
 
 export default createStore(

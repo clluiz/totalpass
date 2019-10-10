@@ -1,5 +1,5 @@
 import * as actions from './plan.actionTypes';
-import { getGifFromGiphy } from '../../api/giphy';
+import { random } from '../../api/giphy';
 
 export const goToPlan = index => {
   return {
@@ -9,7 +9,7 @@ export const goToPlan = index => {
 };
 
 export const getGif = query => async dispach => {
-  const response = await getGifFromGiphy(query);
+  const response = await random(query);
   dispach({
     type: actions.SET_GIF,
     payload: response && response.data ? response.data.image_url : null,

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import smartfit from '../smartfit.svg';
-import plus from '../plus.svg';
-import bioritmo from '../bioritmo.svg';
+import smartfit from '../../../assets/smartfit.svg';
+import plus from '../../../assets/plus.svg';
+import bioritmo from '../../../assets/bioritmo.svg';
 
 import './index.scss';
 

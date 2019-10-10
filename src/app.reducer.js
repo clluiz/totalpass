@@ -15,28 +15,6 @@ const initialState = {
     {
       description: ""
     }
-  ],
-  plans: [
-    {
-      name: "Mega",
-      valie: 100
-    },
-    {
-      name: "Fit",
-      value: 200
-    },
-    {
-      name: "Omega",
-      value: 300
-    },
-    {
-      name: "Beta",
-      value: 400
-    },
-    {
-      name: "Ultra",
-      value: 500
-    }
   ]
 };
 

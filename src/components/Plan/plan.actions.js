@@ -1,8 +1,8 @@
 import * as actions from './plan.actionTypes';
 
-export const setPlan = (plan) => {
+export const goToPlan = (index) => {
   return {
-    type     : actions.SET_PLAN,
-    paylooad : plan
+    type    : actions.GO_TO_PLAN,
+    payload : index
   }
 }

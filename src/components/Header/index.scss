@@ -23,14 +23,4 @@
     text-align: center;
     color: var(--light-text);  
   }
-  
-  .nav-button {
-    border: none;
-    background-color: transparent;
-    color : var(--light-text);
-    outline: none;
-    &:focus {
-      outline: none;
-    }
-  }
 }

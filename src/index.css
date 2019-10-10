@@ -27,3 +27,14 @@
   background-color: #F7FAFA;
   min-height: 440px;
 }
+
+.nav-button {
+  border: none;
+  background-color: transparent;
+  color : var(--light-text);
+  outline: none;
+}
+
+.nav-button:focus {
+  outline: none;
+}

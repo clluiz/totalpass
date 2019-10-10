@@ -1,31 +1,54 @@
 import React, { Component } from "react";
 import ButtonAdvance from "../ButtonAdvance";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+import Card from './Card';
+import { goToPlan } from './plan.actions';
 
 import "../../styles/form.scss";
 import "./index.scss";
 
-import smartfit from './smartfit.svg';
-import plus from './plus.svg';
-import bioritmo from './bioritmo.svg';
-
 class Plan extends Component {
+
+  previousPlan = (event) => {
+    event.preventDefault();
+    const { plan } = this.props;
+    let previousPlan = plan.selectedPlan - 1;
+    if(previousPlan < 0) previousPlan = plan.plans.length - 1;
+    this.props.goToPlan(previousPlan);
+  }
+
+  nextPlan = (event) => {
+    event.preventDefault();
+    const { plan } = this.props;
+    let nextPlan = plan.selectedPlan + 1;
+    if(nextPlan > (plan.plans.length - 1)) nextPlan = 0;
+    this.props.goToPlan(nextPlan);
+  }
+
+  getPlan = () => {
+    const { plan } = this.props;
+    return <Card {...plan.plans[plan.selectedPlan]} />;
+  };
+ 
   render() {
     return (
       <div className="form-container">
         <form className="form plan">
           <div>Escolha seu plano</div>
-          <div className="card-plan">
-            <div className="card-plan__title">Mega</div>
-            <div className="logos">
-              <img alt="Fit" src={smartfit} />
-              <img alt="Plus" src={plus} />
-              <img alt="Bioritmo" src={bioritmo} />
-            </div>
-            <hr />
-            <div className="card-plan__sub-title">Plano Fit +</div>
-            <p className="card-plan__cities"><strong>Bioritmo:</strong>Belém, Limeira, Piracicaba, Shopping Metropolitano, Centro, Chácara Santo Antônio, Continental, Santana, Santo André, São Caetano, Tamboré e West Plaza.</p>
-            <div className="card-plan__price">R$ 100 / mês</div>
+          <div className="caroussel">
+            <button className="nav-button" onClick={(event) => this.previousPlan(event)}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            {this.getPlan()}
+            <button className="nav-button">
+              <FontAwesomeIcon icon={faChevronRight} onClick={(event) => this.nextPlan(event)}/>
+            </button>
           </div>
           <ButtonAdvance onClick={this.props.next} />
         </form>
@@ -34,6 +57,7 @@ class Plan extends Component {
   }
 }
 
-const mapStateToProps = state => ({ app : state.app, plan : state.plan });
+const mapStateToProps = state => ({ plan: state.plan });
+const mapDispatchToProps = dispatch => bindActionCreators({ goToPlan }, dispatch);
 
-export default connect(mapStateToProps)(Plan);
+export default connect(mapStateToProps, mapDispatchToProps)(Plan);

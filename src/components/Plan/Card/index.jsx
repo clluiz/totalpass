@@ -23,7 +23,7 @@ const Card = props => (
     Santana, Santo André, São Caetano, Tamboré e West Plaza.
   </p>
   <div className="card-plan__price">R$ {props.price} / mês</div>
-  { props.plan.gif ? <img alt="Gif" src={props.plan.gif} /> : null }
+  { props.plan.gif ? <img className="gif" alt="Gif" src={props.plan.gif} /> : null }
 </div>
 )
 

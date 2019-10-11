@@ -13,7 +13,14 @@ import '../../styles/form.scss';
 
 class Address extends Component {
   render() {
-    const { values, handleSubmit, handleChange, errors, touched, back } = this.props;
+    const {
+      values,
+      handleSubmit,
+      handleChange,
+      errors,
+      touched,
+      back,
+    } = this.props;
     return (
       <Fragment>
         <Header description="Dados pessoais" next={handleSubmit} back={back} />

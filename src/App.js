@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import PersonalData from './components/PersonalData';
 import Address from './components/Address';
@@ -30,9 +29,9 @@ class App extends Component {
       case 0:
         return <PersonalData next={this.next} />;
       case 1:
-        return <Address next={this.next} />;
+        return <Address back={this.back} next={this.next} />;
       case 2:
-        return <Plan next={this.next} />;
+        return <Plan next={this.next} back={this.back} />;
       case 3:
         return <Confirmation />;
       default:
@@ -43,11 +42,6 @@ class App extends Component {
   render() {
     return (
       <Container fluid>
-        <Header
-          description="Dados pessoais"
-          next={this.next}
-          back={this.back}
-        />
         {this.getStep()}
         <Footer />
       </Container>

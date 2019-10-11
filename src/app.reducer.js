@@ -16,7 +16,6 @@ const initialState = {
       description: '',
     },
   ],
-  canAdvance : false
 };
 
 export default (state = initialState, action) => {

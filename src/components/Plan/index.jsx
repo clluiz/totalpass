@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ButtonAdvance from '../ButtonAdvance';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Card from './Card';
 import { goToPlan, getGif } from './plan.actions';
+import Header from '../Header';
 
 import '../../styles/form.scss';
 import './index.scss';
@@ -48,28 +49,26 @@ class Plan extends Component {
   };
 
   render() {
+    const { back, next } = this.props;
     return (
-      <div className="form-container">
+      <Fragment>
+        <Header description="Dados pessoais" back={back} next={next} />
+        <div className="form-container">
         <div className="form plan">
           <div>Escolha seu plano</div>
           <div className="caroussel">
-            <button
-              className="nav-button"
-              onClick={this.previousPlan}
-            >
+            <button className="nav-button" onClick={this.previousPlan}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             {this.getPlan()}
             <button className="nav-button">
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                onClick={this.nextPlan}
-              />
+              <FontAwesomeIcon icon={faChevronRight} onClick={this.nextPlan} />
             </button>
           </div>
           <ButtonAdvance onClick={this.props.next} />
         </div>
       </div>
+      </Fragment>
     );
   }
 }
